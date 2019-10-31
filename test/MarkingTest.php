@@ -3,7 +3,8 @@
  * Created by PhpStorm.
  * User: thilina
  */
-include_once("../classes/Manager.php");
+$filepath = realpath(dirname(__FILE__));
+include_once($filepath . '/../classes/Manager.php');
 use PHPUnit\Framework\TestCase;
 
 class MarkingTest extends TestCase
@@ -13,7 +14,7 @@ class MarkingTest extends TestCase
     {
         $manager = new Manager();
 
-        $manager->addMarksTest('IT00000000',12,10,5,27);
+        $manager->addMarksTest('IT10000000',12,10,5,27);
         $actual=null;
         $getMarks=$manager->getTotal('IT10000000');
         if($getMarks){

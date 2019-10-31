@@ -1,8 +1,8 @@
 <?php
 $filepath = realpath(dirname(__FILE__));
 include_once ($filepath.'/../classes/User.php');
-
-class form1StudentTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+class form1StudentTest extends TestCase
 {
 /*Test whether student information inserts correctly*/
     public function testStudentInfo()
@@ -23,13 +23,13 @@ class form1StudentTest extends PHPUnit_Framework_TestCase
 
         $actual=null;
 
-		$getStdDetails=$user->getStudentLastRow();
-	    	if($getStdDetails){
+	$getStdDetails=$user->getStudentLastRow();
+	if($getStdDetails){
             while($result=$getStdDetails->fetch_assoc()){
-	    	$actual = $result['stdID']+', '+$result['address']+', '+$result['homePhn']+', '+$result['mobilePhn']+', '+$result['email']+', '+$result['year']+', '+$result['semester']+', '+$result['cgpa'];
+	    	$actual = $result['stdID'].", ".$result['address'].", ".$result['homePhn'].", ".$result['mobilePhn'].", ".$result['email'].", ".$result['year'].", ".$result['semester'].", ".$result['cgpa'];
 	    }
-		}
-        $this->assertEquals('IT16019232, 15 Malabe, 0111824578, 0779645781, kamal@gmail.com, 2, 2, 1.2',$actual);
+	}
+        $this->assertEquals('IT16019232, 15 Malabe, 111824578, 779645781, kamal@gmail.com, 2, 2, 1.2',$actual);
     }
 }
 
