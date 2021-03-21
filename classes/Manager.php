@@ -87,7 +87,7 @@ class Manager
     }
     
     public function addMarksTest($id,$vmark,$mpmark,$irmark,$tot){
-        $query = "insert into total_marks(ssid,Vmarks,MPmark,IRmark,Total) VALUES('$id','$vmark','$mpmark','$irmark','$tot')";
+        $query = "insert into total_marks(ssid,Vmark,MPmark,IRmark,Total) VALUES('$id','$vmark','$mpmark','$irmark','$tot')";
         $result = $this->db->insert($query);
         return true;
     }
@@ -96,6 +96,19 @@ class Manager
         $query = "SELECT * from total_marks where ssid='$id'";
         $result = $this->db->select($query);
         return $result;
+    }
+
+    public function getSheduleById($id){
+        $query = "SELECT * from schedule_tab where Reg_no='$id'";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+    public function getSchedule(){
+        $query="select * from schedule_tab";
+        $result = $this->db->select($query);
+        return $result;
+
     }
 }
 ?>
